@@ -4,6 +4,8 @@ import { EcrForm } from './types';
 import { ecrForms } from './forms';
 import { playerEcrDataManager } from './playerDatabase';
 
+//
+
 interface OnSubmitFuncType {
     (player: Player, result: ModalFormResponse | ActionFormResponse): void
 }

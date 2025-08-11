@@ -8,13 +8,6 @@ import { createEmptyCircle, createFilledCircle, createOverClockedEmptyCircle } f
 import { processingManager } from './processings';
 import { delayedFunctionsManager } from './delayedFunctions';
 export const ecrItems = {
-    'ecr:easy_creator': {
-        name: 'クリーパーの本',
-        onUse_with_sneak: (e) => {
-        },
-        onBreakBlock_after: (e) => {
-        }
-    },
     'ecr:fill': {
         name: '埋め立て',
         onUse_with_sneak: (e) => {
@@ -434,6 +427,20 @@ export const ecrItems = {
                 }
             }
         }
+    },
+    'ecr:easy_creator': {
+        name: 'イージークリエイターの本',
+        onUse_without_sneak(e) {
+            showForm(e.source, 'ecr_book');
+        },
+    },
+    'ecr:ukijima': {
+        name: '浮島メーカー',
+        onUse_without_sneak(e) {
+            e.source.sendMessage('まだ開発中です...もう少しお待ちください。');
+            // showForm(e.source, 'ecr_book', e=>{
+            // });
+        },
     }
 };
 function setStartPosBlock(location, dimension) {

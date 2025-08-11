@@ -8,12 +8,25 @@ import { structureManager } from './structures';
 export const ecrForms: Record<string, EcrForm> = {
     terrain_options: {
         id: 'terrain_options',
-        type: 'action',
+        type: 'modal',
         title: '埋め立てオプション',
-        body: '地形を壊さないかどうか\n現在の選択: §2地形を壊す',
-        buttons: ['地形を壊す', '地形を保つ'],
+        body: '',
+        controls: [
+            {
+                type: 'dropdown',
+                label: '地形を壊さないかどうか',
+                options: ['地形を壊す', '地形を保つ'],
+                defaultValue: 0
+            },
+            {
+                type: 'dropdown',
+                label: 'オーバークロックモード',
+                options: ['開発中です。もう少しお待ちください。'],
+                defaultValue: 0
+            }
+        ],
         onSubmit: (player: Player, result: any) => {
-            const buttonIndex = result.selection;
+            const buttonIndex = result.formValues[0];
             if (buttonIndex === 0) {
                 player.sendMessage('地形を壊すモードが選択されました');
                 ecrForms.terrain_options.body = '地形を壊さないかどうか\n現在の選択: §2地形を壊す';
